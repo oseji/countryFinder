@@ -41,6 +41,9 @@ function App() {
         console.log(data);
       } catch (error) {
         setError(error);
+        // if (error) {
+        //   alert(error.message);
+        // }
       } finally {
         setIsLoading(false);
       }
