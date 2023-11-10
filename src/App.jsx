@@ -14,6 +14,7 @@ function App() {
   const [themeImg, setThemeImg] = useState(moon);
   const [countryName, setCountryName] = useState("");
   const [region, setRegion] = useState("");
+  const [countryDetails, setCountryDetails] = useState("");
 
   const appBodyRef = useRef(null);
   const headerRef = useRef(null);
@@ -116,6 +117,8 @@ function App() {
     const containerValue = container.getAttribute("value");
 
     console.log(containerValue);
+    setCountryName(containerValue);
+    //console.log(countryDetails);
   };
 
   if (isLoading) {
@@ -203,38 +206,39 @@ function App() {
                 <div className="cardGrp">
                   {data &&
                     data.map((item, index) => (
-                      <Link to="/CountryDetails" key={index}>
-                        <div
-                          className="cardContainer cardContainerLight"
-                          key={index}
-                          value={item.name.common}
-                          onClick={handleCountryDetails}
-                        >
-                          <img
-                            src={item.flags.png}
-                            alt={item.name.common}
-                            className="countryFlag"
-                          />
+                      <div
+                        className="cardContainer cardContainerLight"
+                        key={index}
+                        value={item.name.common}
+                        onClick={handleCountryDetails}
+                      >
+                        <img
+                          src={item.flags.png}
+                          alt={item.name.common}
+                          className="countryFlag"
+                        />
 
-                          <div className="countryDetails">
+                        <div className="countryDetails">
+                          <Link to="/CountryDetails" key={index}>
                             <h1 className="countryName">{item.name.common}</h1>
-                            <div className="countryStat">
-                              <p className="statHeading">population:</p>
-                              <p className="statDetail">{item.population}</p>
-                            </div>
+                          </Link>
 
-                            <div className="countryStat">
-                              <p className="statHeading">region:</p>
-                              <p className="statDetail">{item.region}</p>
-                            </div>
+                          <div className="countryStat">
+                            <p className="statHeading">population:</p>
+                            <p className="statDetail">{item.population}</p>
+                          </div>
 
-                            <div className="countryStat">
-                              <p className="statHeading">capital:</p>
-                              <p className="statDetail">{item.capital}</p>
-                            </div>
+                          <div className="countryStat">
+                            <p className="statHeading">region:</p>
+                            <p className="statDetail">{item.region}</p>
+                          </div>
+
+                          <div className="countryStat">
+                            <p className="statHeading">capital:</p>
+                            <p className="statDetail">{item.capital}</p>
                           </div>
                         </div>
-                      </Link>
+                      </div>
                     ))}
                 </div>
               </div>
@@ -242,7 +246,10 @@ function App() {
           </Route>
 
           <Route path="/CountryDetails">
-            <CountryDetails></CountryDetails>
+            <CountryDetails
+              data={data}
+              countryToDisplay={countryDetails}
+            ></CountryDetails>
           </Route>
         </Switch>
       </div>
