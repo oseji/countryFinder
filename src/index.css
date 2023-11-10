@@ -21,6 +21,13 @@ header {
   @apply bg-slate-600 border-b-2 border-transparent;
 }
 
+.cardContainerLight {
+  @apply bg-white;
+}
+.cardContainerDark {
+  @apply bg-slate-600;
+}
+
 .loadingMessage,
 .errorMessage {
   @apply text-4xl font-bold mt-52 text-center;
@@ -91,14 +98,7 @@ option {
 }
 
 .cardContainer {
-  @apply rounded-lg  border-2 border-transparent;
-}
-
-.cardContainerLight {
-  @apply bg-white;
-}
-.cardContainerDark {
-  @apply bg-slate-600;
+  @apply rounded-lg;
 }
 
 .countryFlag {
@@ -136,12 +136,12 @@ option {
 }
 
 .countryDetailsGrp {
-  @apply flex flex-row justify-between items-center gap-20;
+  @apply flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-20;
 }
 
 .flagContainer,
 .informationContainer {
-  @apply w-1/2;
+  @apply lg:w-1/2;
 }
 
 .flagImg {
@@ -153,7 +153,7 @@ option {
 }
 
 .infoRow {
-  @apply flex flex-row gap-2;
+  @apply flex flex-row gap-2 items-center;
 }
 
 .infoName {

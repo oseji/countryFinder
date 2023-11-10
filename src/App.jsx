@@ -20,6 +20,7 @@ function App() {
   const headerRef = useRef(null);
   const inputRef = useRef(null);
   const regionsRef = useRef(null);
+  const cardContainerRef = useRef(null);
 
   const apiLinkAll = `https://restcountries.com/v3.1/all`;
   const [link, setLink] = useState(apiLinkAll);
@@ -81,6 +82,7 @@ function App() {
     const headerNav = headerRef.current;
     const inputContainer = inputRef.current;
     const regionContainer = regionsRef.current;
+    const cardContainer = cardContainerRef.current;
 
     appBody.classList.toggle("appLight");
     appBody.classList.toggle("appDark");
@@ -88,10 +90,14 @@ function App() {
     headerNav.classList.toggle("headerLight");
     headerNav.classList.toggle("headerDark");
 
+    cardContainer.classList.toggle("cardContainerLight");
+    cardContainer.classList.toggle("cardContainerDark");
+
     regionContainer.classList.toggle("regionsDark");
     inputContainer.classList.toggle("inputDark");
 
     //console.log(appBody, headerNav, regionContainer);
+    console.log(cardContainer);
 
     themeText === "Dark mode"
       ? setThemeText("Light mode")
@@ -207,6 +213,7 @@ function App() {
                   {data &&
                     data.map((item, index) => (
                       <div
+                        ref={cardContainerRef}
                         className="cardContainer cardContainerLight"
                         key={index}
                         value={item.name.common}
@@ -218,7 +225,7 @@ function App() {
                           className="countryFlag"
                         />
 
-                        <div className="countryDetails">
+                        <div className="countryDetails ">
                           <Link to="/CountryDetails" key={index}>
                             <h1 className="countryName">{item.name.common}</h1>
                           </Link>
