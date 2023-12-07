@@ -2,124 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-.app,
-header {
-  @apply transition ease-in-out duration-100;
+.App,
+header,
+.cardContainer {
+  @apply transition-all ease-in-out duration-200;
 }
 
-.appLight {
-  @apply bg-slate-200;
+.AppBody {
+  @apply min-h-screen;
 }
-.appDark {
-  @apply bg-slate-800 text-white;
+
+.lightMode {
+  @apply text-black bg-slate-100;
+}
+.darkMode {
+  @apply text-white bg-slate-800;
 }
 
 .headerLight {
-  @apply bg-white  border-b-2;
+  @apply bg-white text-black;
 }
 .headerDark {
-  @apply bg-slate-600 border-b-2 border-transparent;
+  @apply bg-slate-800 text-white;
 }
 
-.cardContainerLight {
-  @apply bg-white;
-}
-.cardContainerDark {
-  @apply bg-slate-600;
-}
-
-.loadingMessage,
-.errorMessage {
-  @apply text-4xl font-bold mt-52 text-center;
-}
-
+/* HEADER */
 header {
-  @apply flex flex-row justify-between items-center px-5 lg:px-10 lg:py-2 py-8;
+  @apply flex flex-row justify-between items-center px-5 lg:px-20 py-5 shadow-md;
 }
 
-.headerTitle {
-  @apply lg:text-2xl font-bold;
+.stickyHeader {
+  @apply fixed top-0 w-full z-10 opacity-95;
+}
+
+.headerHeading {
+  @apply text-base md:text-2xl lg:text-3xl font-bold;
 }
 
 .themeGrp {
-  @apply flex flex-row gap-2 items-center text-sm font-semibold cursor-pointer;
+  @apply flex flex-row gap-2 items-center cursor-pointer;
 }
 
-.themeImg {
+.themeIcon {
   @apply h-5;
 }
 
-/* APP BODY */
-.appBody {
-  @apply px-5 lg:px-10 py-8;
+/* SEARCH SECTION */
+main {
+  @apply px-5 lg:px-20;
 }
-
 .searchSection {
-  @apply flex flex-col lg:flex-row gap-5 lg:gap-0 justify-between items-start lg:items-center;
+  @apply flex flex-col md:flex-row justify-between gap-6 md:gap-0 py-5;
 }
 
 .searchBar {
-  @apply w-full lg:w-96;
+  @apply w-full md:w-1/2 lg:w-1/3 py-2 px-4 rounded-lg  text-slate-400  focus:outline-0;
 }
 
-#Regions,
-.searchBar {
-  @apply p-3 rounded-lg cursor-pointer text-sm;
+#regions {
+  @apply w-32 md:w-auto text-sm p-2 rounded-lg cursor-pointer focus:outline-0 appearance-none;
 }
 
-.regionsDark,
-.inputDark {
-  @apply bg-slate-600;
-}
-.inputDark::placeholder {
-  @apply text-white;
-}
-
-#Regions:focus,
-.searchBar:focus {
-  @apply outline-0;
-}
-
-option {
-  @apply cursor-pointer;
-}
-
-/* CARD SECTION */
-.cardSection {
-  @apply mt-10 min-h-screen;
-}
-
-.resultNumber {
-  @apply text-3xl font-bold mb-10;
-}
-
-.cardGrp {
-  @apply grid grid-cols-1 lg:grid-cols-4 gap-10;
+.resultsContainer {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center mt-10;
 }
 
 .cardContainer {
-  @apply rounded-lg;
+  @apply max-w-card max-h-card w-60 rounded-lg hover:scale-105 cursor-pointer;
 }
 
 .countryFlag {
-  @apply rounded-t-lg h-44 w-full;
+  @apply rounded-t-lg min-h-flag min-w-full h-40;
 }
 
 .countryName {
-  @apply font-bold text-xl mb-3 hover:scale-105  cursor-pointer hover:text-red-600 transition ease-in-out duration-200;
+  @apply font-bold text-xl mb-3;
 }
 
 .countryDetails {
-  @apply py-2 px-4;
+  @apply p-5;
 }
 
 .countryStat {
-  @apply flex flex-row gap-1 text-sm mb-1;
+  @apply flex flex-row gap-2 text-sm;
 }
 
-.statDetail,
 .statHeading {
-  @apply capitalize;
+  @apply font-semibold capitalize;
 }
 
 .statDetail {
@@ -128,7 +97,7 @@ option {
 
 /* COUNTRY DETAILS */
 .countryDetailsPage {
-  @apply h-screen bg-white px-5 lg:px-10 py-8;
+  @apply min-h-screen  px-5 lg:px-10 py-8;
 }
 
 .prevBtn {
