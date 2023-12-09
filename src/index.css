@@ -2,28 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-.App,
-header,
-.cardContainer {
-  @apply transition-all ease-in-out duration-200;
-}
-
 .AppBody {
-  @apply min-h-screen;
+  @apply min-h-screen font-nunito;
 }
 
 .lightMode {
-  @apply text-black bg-slate-100;
+  @apply text-black bg-bgLightMode;
 }
 .darkMode {
-  @apply text-white bg-slate-800;
+  @apply text-white bg-bgDarkMode;
 }
 
 .headerLight {
   @apply bg-white text-black;
 }
 .headerDark {
-  @apply bg-slate-800 text-white;
+  @apply bg-darkModeElements text-white;
 }
 
 /* HEADER */
@@ -68,7 +62,7 @@ main {
 }
 
 .cardContainer {
-  @apply max-w-card max-h-card w-60 rounded-lg hover:scale-105 cursor-pointer;
+  @apply max-w-card max-h-card w-60 rounded-lg hover:scale-105 transition-all ease-in-out duration-200 cursor-pointer;
 }
 
 .countryFlag {
@@ -80,7 +74,7 @@ main {
 }
 
 .countryDetails {
-  @apply p-5;
+  @apply p-5 shadow-md rounded-b-md;
 }
 
 .countryStat {

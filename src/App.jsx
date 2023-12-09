@@ -17,13 +17,21 @@ function App() {
 
   const [themeToggled, setThemeToggled] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const [countryFound, setCountryFound] = useState(null);
 
   const fetchData = async () => {
     try {
       const response = await fetch(apiLink);
 
       if (!response.ok) {
-        throw new Error("A problem occurred while loading");
+        if (response.status === 404) {
+          setCountryFound(false);
+          throw new Error("Country not found");
+        } else {
+          throw new Error("A problem occurred while loading");
+        }
+      } else {
+        setCountryFound(true);
       }
 
       const data = await response.json();
@@ -34,7 +42,6 @@ function App() {
       console.log(apiData);
     } catch (error) {
       setApiError(error);
-      console.log(error);
     } finally {
       setApiLoading(false);
     }
@@ -96,6 +103,13 @@ function App() {
     window.addEventListener("scroll", handleScroll);
   }, []);
 
+  // //COUNTRY NOT FOUND
+  // useState(() => {
+  //   if (!countryFound) {
+  //     alert(apiError);
+  //   }
+  // }, [countryFound]);
+
   return (
     <Router>
       <div className={`AppBody ${themeToggled ? "darkMode" : "lightMode"}`}>
@@ -132,7 +146,7 @@ function App() {
                   type="text"
                   placeholder="Search for a country..."
                   className={`searchBar ${
-                    themeToggled ? "bg-slate-700" : "bg-white"
+                    themeToggled ? "bg-darkModeElements" : "bg-white"
                   }`}
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
@@ -165,7 +179,7 @@ function App() {
                   {apiData.map((element, index) => (
                     <div
                       className={`cardContainer ${
-                        themeToggled ? "bg-slate-700" : "bg-white"
+                        themeToggled ? "bg-darkModeElements" : "bg-white"
                       }`}
                       key={index}
                       data-value={element.name.common}
@@ -210,6 +224,7 @@ function App() {
             <CountryDetailsPage
               apiData={apiData}
               themeToggled={themeToggled}
+              fetchData={fetchData}
             ></CountryDetailsPage>
           </Route>
         </Switch>

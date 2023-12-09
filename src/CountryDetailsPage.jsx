@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const CountryDetailsPage = ({ apiData, themeToggled }) => {
-  console.log(apiData[0]);
+const CountryDetailsPage = ({ apiData, themeToggled, fetchData }) => {
+  console.log(fetchData);
+
+  // let borderName =''
+  let apiLink = "";
 
   return (
     <div
@@ -54,19 +58,24 @@ const CountryDetailsPage = ({ apiData, themeToggled }) => {
                   <p className="statDetail">{apiData[0].capital[0]}</p>
                 </div>
 
-                {/* <div className="infoRow mt-10">
+                <div className="infoRow mt-10">
                   <p className="infoHeading">Borders:</p>
                   <div className="info grid grid-cols-5 gap-2 overflow-hidden ">
-                    {apiData[0].borders.map((i, index) => (
-                      <span
-                        className="rounded-lg border border-slate-700 px-4 py-2 text-center text-xs "
-                        key={index}
-                      >
-                        {i}
-                      </span>
-                    ))}
+                    {apiData[0].borders &&
+                      apiData[0]?.borders.map((i, index) => (
+                        <span
+                          className="rounded-lg border border-slate-700 px-4 py-2 text-center text-xs "
+                          key={index}
+                          // onClick={() => {
+                          //   apiLink = `https://restcountries.com/v3.1/name/${i}`;
+                          //   fetchData();
+                          // }}
+                        >
+                          {i}
+                        </span>
+                      ))}
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
           </div>

@@ -12,6 +12,15 @@ export default {
       maxHeight: {
         card: "340px",
       },
+      fontFamily: {
+        nunito: ["Nunito Sans", "sans - serif"],
+      },
+      colors: {
+        bgLightMode: "hsl(0, 0%, 98%)",
+        inputLightMode: "hsl(0, 0%, 52%)",
+        bgDarkMode: "hsl(207, 26%, 17%)",
+        darkModeElements: "hsl(209, 23%, 22%)",
+      },
     },
   },
   plugins: [],
