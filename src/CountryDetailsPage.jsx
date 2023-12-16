@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 const CountryDetailsPage = ({ apiData, themeToggled, fetchData }) => {
   console.log(fetchData);
 
-  // let borderName =''
-  let apiLink = "";
-
   return (
     <div
       className={`countryDetailsPage ${
@@ -15,7 +12,9 @@ const CountryDetailsPage = ({ apiData, themeToggled, fetchData }) => {
     >
       <Link to="/">
         <button
-          className={`prevBtn ${themeToggled ? "bg-slate-700" : "bg-white"}`}
+          className={`prevBtn ${
+            themeToggled ? "bg-darkModeElements" : "bg-white"
+          }`}
         >
           Back
         </button>
@@ -41,18 +40,24 @@ const CountryDetailsPage = ({ apiData, themeToggled, fetchData }) => {
                   <p className="statHeading">Native name:</p>
                   <p className="statDetail">{apiData[0].name.common}</p>
                 </div>
+
                 <div className="infoRow">
                   <p className="statHeading">Population:</p>
-                  <p className="statDetail">{apiData[0].population}</p>
+                  <p className="statDetail">
+                    {apiData[0].population.toLocaleString()}
+                  </p>
                 </div>
+
                 <div className="infoRow">
                   <p className="statHeading">Region:</p>
                   <p className="statDetail">{apiData[0].region}</p>
                 </div>
+
                 <div className="infoRow">
                   <p className="statHeading">Sub region:</p>
                   <p className="statDetail">{apiData[0].subregion}</p>
                 </div>
+
                 <div className="infoRow">
                   <p className="statHeading">Capital:</p>
                   <p className="statDetail">{apiData[0].capital[0]}</p>
@@ -63,14 +68,7 @@ const CountryDetailsPage = ({ apiData, themeToggled, fetchData }) => {
                   <div className="info grid grid-cols-5 gap-2 overflow-hidden ">
                     {apiData[0].borders &&
                       apiData[0]?.borders.map((i, index) => (
-                        <span
-                          className="rounded-lg border border-slate-700 px-4 py-2 text-center text-xs "
-                          key={index}
-                          // onClick={() => {
-                          //   apiLink = `https://restcountries.com/v3.1/name/${i}`;
-                          //   fetchData();
-                          // }}
-                        >
+                        <span className="borderContainer" key={index}>
                           {i}
                         </span>
                       ))}

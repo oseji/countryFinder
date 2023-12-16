@@ -177,43 +177,42 @@ function App() {
               {apiData !== null && apiData !== undefined && (
                 <div className="resultsContainer">
                   {apiData.map((element, index) => (
-                    <div
-                      className={`cardContainer ${
-                        themeToggled ? "bg-darkModeElements" : "bg-white"
-                      }`}
-                      key={index}
-                      data-value={element.name.common}
-                      onClick={handleCountryDetails}
-                    >
-                      <img
-                        src={element.flags.png}
-                        alt={element.name.common}
-                        className="countryFlag"
-                      />
+                    <Link to="/CountryDetailsPage" key={index}>
+                      <div
+                        className={`cardContainer ${
+                          themeToggled ? "bg-darkModeElements" : "bg-white"
+                        }`}
+                        data-value={element.name.common}
+                        onClick={handleCountryDetails}
+                      >
+                        <img
+                          src={element.flags.png}
+                          alt={element.name.common}
+                          className="countryFlag"
+                        />
 
-                      <div className="countryDetails ">
-                        <Link to="/CountryDetailsPage">
+                        <div className="countryDetails ">
                           <h1 className="countryName">{element.name.common}</h1>
-                        </Link>
 
-                        <div className="countryStat">
-                          <p className="statHeading">population:</p>
-                          <p className="statDetail">
-                            {element.population.toLocaleString()}
-                          </p>
-                        </div>
+                          <div className="countryStat">
+                            <p className="statHeading">population:</p>
+                            <p className="statDetail">
+                              {element.population.toLocaleString()}
+                            </p>
+                          </div>
 
-                        <div className="countryStat">
-                          <p className="statHeading">region:</p>
-                          <p className="statDetail">{element.region}</p>
-                        </div>
+                          <div className="countryStat">
+                            <p className="statHeading">region:</p>
+                            <p className="statDetail">{element.region}</p>
+                          </div>
 
-                        <div className="countryStat">
-                          <p className="statHeading">capital:</p>
-                          <p className="statDetail">{element.capital}</p>
+                          <div className="countryStat">
+                            <p className="statHeading">capital:</p>
+                            <p className="statDetail">{element.capital}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               )}

@@ -70,7 +70,7 @@ main {
 }
 
 .countryName {
-  @apply font-bold text-xl mb-3;
+  @apply font-bold text-lg mb-3;
 }
 
 .countryDetails {
@@ -78,7 +78,7 @@ main {
 }
 
 .countryStat {
-  @apply flex flex-row gap-2 text-sm;
+  @apply flex flex-row gap-2 text-sm lg:text-xs;
 }
 
 .statHeading {
@@ -95,7 +95,7 @@ main {
 }
 
 .prevBtn {
-  @apply font-semibold text-sm px-10 p-2 rounded-lg border mb-10;
+  @apply font-semibold text-sm px-10 p-2 rounded-lg border border-slate-600 mb-10;
 }
 
 .countryDetailsGrp {
@@ -129,4 +129,8 @@ main {
 
 .info {
   @apply text-slate-700;
+}
+
+.borderContainer {
+  @apply rounded-lg border border-slate-700 px-4 py-2 text-center text-xs cursor-pointer;
 }
