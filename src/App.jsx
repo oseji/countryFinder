@@ -6,7 +6,7 @@ import moon from "./assets/icons8-moon-60.png";
 import sun from "./assets/icons8-sun-60.png";
 
 function App() {
-  const [apiData, setApiData] = useState(null);
+  const [apiData, setApiData] = useState([]);
   const [apiError, setApiError] = useState(null);
   const [apiLoading, setApiLoading] = useState(true);
 
@@ -18,6 +18,10 @@ function App() {
   const [themeToggled, setThemeToggled] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const [countryFound, setCountryFound] = useState(null);
+
+  const [showAll, setShowAll] = useState(false);
+  const countriesToShow = showAll ? apiData : apiData.slice(0, 8);
+  const showAllBtn = showAll ? "Hide" : "Show all countries";
 
   const fetchData = async () => {
     try {
@@ -83,7 +87,15 @@ function App() {
     console.log(cardContainerValue);
   };
 
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
+
   //FETCHING API DATA
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
   useEffect(() => {
     fetchData();
   }, [apiLoading, apiLink]);
@@ -176,7 +188,7 @@ function App() {
 
               {apiData !== null && apiData !== undefined && (
                 <div className="resultsContainer">
-                  {apiData.map((element, index) => (
+                  {countriesToShow.map((element, index) => (
                     <Link to="/CountryDetailsPage" key={index}>
                       <div
                         className={`cardContainer ${
@@ -216,6 +228,13 @@ function App() {
                   ))}
                 </div>
               )}
+
+              <button
+                className="w-fit font-semibold mx-auto my-10 py-2 block"
+                onClick={toggleShowAll}
+              >
+                {showAllBtn}
+              </button>
             </main>
           </Route>
 
